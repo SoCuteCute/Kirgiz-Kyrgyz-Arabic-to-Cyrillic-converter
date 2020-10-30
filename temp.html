@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #table_wrap > table {
+            font-size: 16px;
+            text-align: center;
+            margin: 0 auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 2px #000;
+        }
+
+        table thead tr,table tbody tr {
+            height: 50px;
+            line-height: 50px;
+            /*background-color: pink;*/
+        }
+        table tr th:first-child,table tr td:first-child {/*设置table左边边框*/
+            border-left: 2px solid #eaeaea;
+        }
+        table tr th:last-child,table tr td:last-child {/*设置table右边边框*/
+            border-right: 2px solid #eaeaea;
+        }
+        table tr td:first-child,
+        table tr td:nth-child(2),
+        table tr td:nth-child(3),
+        table tr td:last-child{/*设置table表格每列底部边框*/
+            border-bottom: 2px solid #eaeaea;
+        }
+        /*table tr:last-child td:first-child,
+        table tr:last-child td:nth-child(2),
+        table tr:last-child td:nth-child(3),
+        table tr:last-child td:last-child{/!*设置table表格最后一列底部边框*!/
+            border-bottom: 2px solid #000;
+        }*/
+        table tr th {
+            background: #eaeaea;
+        }
+        table tr:first-child th:first-child {
+            border-top-left-radius: 12px;
+        }
+
+        table tr:first-child th:last-child {
+            border-top-right-radius: 12px;
+        }
+        table tr:last-child td:first-child {
+            border-bottom-left-radius: 12px;
+        }
+
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 12px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="table_wrap">
+    <table class="table" width="800" cellspacing="0" cellpadding="0">
+        <thead class="table_head">
+        <tr>
+            <th>头部1</th>
+            <th>头部2</th>
+            <th>头部3</th>
+            <th>头部4</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1内容1</td>
+            <td>1内容2</td>
+            <td>1内容3</td>
+            <td>1内容4</td>
+        </tr>
+        <tr>
+            <td>2内容1</td>
+            <td>2内容2</td>
+            <td>2内容3</td>
+            <td>2内容4</td>
+        </tr>
+        <tr>
+            <td>3内容1</td>
+            <td>3内容2</td>
+            <td>3内容3</td>
+            <td>3内容4</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

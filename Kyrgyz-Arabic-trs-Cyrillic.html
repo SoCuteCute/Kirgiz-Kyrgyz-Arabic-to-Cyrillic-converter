@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>柯尔克孜语阿拉伯文与西里尔文转换器</title>
+<link rel="stylesheet" type="text/css" href="body.css" />
+<!--<script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>-->
+<script type="text/javascript" src="ui.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+var mode = 0; //默认是阿拉伯文转西里尔文
+//mode =1 西里尔文转阿拉伯文
+function cy_to_ar()
+{
+	var txt=form.cyrillic.value;
+	form.arabic.value=cytoar(txt);
+}
+
+function ar_to_cy()
+{
+	var txt=form.arabic.value;
+	form.cyrillic.value=artocy(txt);
+}
+
+
+function upperCase(x)
+{
+	if(mode === 0){
+			var txt=form.arabic.value;
+			form.cyrillic.value=artocy(txt);
+		}else{
+			var txt=form.arabic.value;
+			form.cyrillic.value=cytoar(txt);
+		}
+}
+/*
+var txt_cy_temp=form.cyrillic.value;
+var txt_ar_temp=form.arabic.value;
+*/
+function getTranslation() {
+	if(mode === 0){
+		var txt = form.cyrillic.value;/*获取需要翻译的文字*/
+		
+	}else{
+		var txt = form.arabic.value;
+	}
+        $.getJSON(
+            "https://translate.yandex.net/api/v1.5/tr.json/translate", "text="+txt+"&lang=ky-en&key=trnsl.1.1.20200330T184636Z.eb68ef6fbf7b5df8.04fb0a638ca715b87ee5db5726217543a3546434",
+            function (res) {
+                console.log("翻译：", res);
+                if(res.code!==200){
+                    alert('对不起，翻译有误，请重试！');
+                    return
+                }
+				
+				form.arabic.value += "\n\ntranslation:\n"+res.text[0];
+				form.cyrillic.value += "\n\ntranslation:\n"+res.text[0];
+            }
+        )
+    }
+
+</script>
+</head>
+
+<body id="mybody">
+<div align="center">
+<div style="text-align: center;width: 90%;font-size: 40px">
+	柯尔克孜语阿拉伯文与西里尔文转换器 & 柯尔克孜文翻译器
+	<br>
+	Kirgiz/Kyrgyz Arabic to Cyrillic converter & Kirgiz to English translater
+	<br>
+</div>
+<div style="text-align: left;width: 90%;margin-top: 10px">点击按钮"⇄"切换语言</div>
+</div>
+<div align="center">
+<form id="form">
+	<table id="maintb" cellpadding="0" cellspacing="0">
+		<tr id="tr1" >
+			<td colspan="2" class="td">
+				<input id="left" type="text" value="阿拉伯文قىرعىز تىلى"/>
+			</td>
+			<td colspan="2" class="td">
+				<input id="trans" type="button" value="⇄" onClick="setText()" title="点击切换语言"/>
+			</td>
+			<td colspan="2" class="td">
+				<input id="right"  type="text" value="西里尔文кыргыз тили"/>				
+			</td>
+			
+		</tr>
+		<tr id="tr2">
+			<td colspan="3">
+				
+				<div align="right" style="background-color: #F8F2F2">
+					<textarea id="arabic" placeholder="请在此输入文本...." onkeyup="upperCase(this.id)"></textarea>
+					<input id="center" type="button" onClick="getTranslation()" value="翻译为英文"/>
+				</div>
+			</td>
+			<!--
+			<td>
+				<input type="button" onClick="ar_to_cy();" value="阿拉伯转西里尔"/>
+				<input type="button" onClick="cy_to_ar();" value="西里尔转阿拉伯"/>
+			</td>
+			-->
+			<td colspan="3">	
+				<div align="right" style="background-color: #EFE9E9">
+					<textarea id="cyrillic"></textarea>
+					<input id="center" type="button" onClick="getTranslation()" value="translate"/>
+				</div>
+			</td>
+		</tr>
+        
+	</table>
+	<table>
+		<tr>
+		   <a href="http://translate.yandex.com">Translation:Powered by Yandex.Translate </a>
+			<br>
+		   <a href="http://www.beian.miit.gov.cn/" target="_blank">津ICP备20001098号 </a>&nbsp;Email:lixudong521@foxmail.com
+		  
+		</tr>
+	</table>
+</form>
+</div>
+</body>
+
+</html>
