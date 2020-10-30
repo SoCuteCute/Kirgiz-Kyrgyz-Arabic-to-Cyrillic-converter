@@ -1,5 +1,3 @@
-[toc]
-
 # 柯尔克孜文/吉尔吉斯语 阿拉伯文与西里尔文转换器(Kirgiz/Kyrgyz Arabic to Cyrillic converter)
 
 第一，本人并不是柯族，也不是柯语专业的。如果发现问题，请务必邮件：lixudong521@foxmail.com。
